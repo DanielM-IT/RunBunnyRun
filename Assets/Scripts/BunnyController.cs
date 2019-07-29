@@ -29,6 +29,11 @@ public class BunnyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.LoadLevel("TitleScene");
+        }
+
         if (bunnyHurtTime == -1)
         {
             if (Input.GetButtonUp("Jump") && jumpsLeft > 0)
