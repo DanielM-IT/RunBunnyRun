@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BunnyController : MonoBehaviour
 {
@@ -31,12 +32,12 @@ public class BunnyController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.LoadLevel("TitleScene");
+            SceneManager.LoadScene("TitleScene");
         }
 
         if (bunnyHurtTime == -1)
         {
-            if (Input.GetButtonUp("Jump") && jumpsLeft > 0)
+            if ((Input.GetButtonUp("Jump") || Input.GetButtonUp("Fire1")) && jumpsLeft > 0)
             {
                 if (myRigidBody.velocity.y < 0)
                 {
@@ -63,7 +64,7 @@ public class BunnyController : MonoBehaviour
         {
             if (Time.time > bunnyHurtTime + 2)
             {
-                Application.LoadLevel(Application.loadedLevel);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
     }
